@@ -21,12 +21,11 @@ struct node * insert_front(struct node * n, int val){
 
 struct node * free_list(struct node * n){
     struct node * cur = n;
-    struct node * nextNode = cur -> next;
-    while(nextNode){
+    struct node * nextNode;
+    while(cur){
+      nextNode = cur -> next;
       free(cur);
       cur = nextNode;
-      nextNode = cur -> next;
     }
-    free(cur);
-    return NULL;
+    return cur;
 }
